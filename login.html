@@ -6,164 +6,87 @@
   <title>تسجيل الدخول | Liumexcode</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap');
-
     body {
       font-family: 'Cairo', sans-serif;
       background: linear-gradient(135deg, #0d0d2b, #1b1b4d);
       color: #fff;
       margin: 0;
-      padding: 0;
       display: flex;
       align-items: center;
       justify-content: center;
       height: 100vh;
     }
-
-    .login-container {
-      background: rgba(255, 255, 255, 0.05);
+    .login-box {
+      background: rgba(255,255,255,0.05);
       padding: 2rem;
       border-radius: 20px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
       width: 90%;
       max-width: 400px;
       text-align: center;
       backdrop-filter: blur(10px);
     }
-
-    h2 {
-      margin-bottom: 1rem;
-      font-size: 1.6rem;
-      color: #00bfff;
-    }
-
-    input[type="text"], input[type="password"] {
+    h2 { color: #00bfff; margin-bottom: 1rem; }
+    input {
       width: 100%;
-      padding: 0.9rem;
+      padding: 0.8rem;
       margin: 0.5rem 0;
       border: none;
       border-radius: 10px;
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255,255,255,0.1);
       color: #fff;
-      font-size: 1rem;
       outline: none;
+      font-size: 1rem;
     }
-
-    input::placeholder {
-      color: #bbb;
-    }
-
-    .login-btn {
-      background-color: #00bfff;
-      color: #fff;
-      border: none;
+    button {
       width: 100%;
       padding: 0.9rem;
-      font-size: 1rem;
+      background: #00bfff;
+      border: none;
       border-radius: 10px;
-      margin-top: 1rem;
+      color: #fff;
+      font-size: 1rem;
       cursor: pointer;
       transition: 0.3s;
     }
-
-    .login-btn:hover {
-      background-color: #0095cc;
-    }
-
-    .forgot {
+    button:hover { background: #0095cc; }
+    a {
+      color: #aaa;
+      font-size: 0.9rem;
+      text-decoration: none;
       display: block;
       margin-top: 1rem;
-      color: #aaa;
-      text-decoration: none;
-      font-size: 0.9rem;
     }
-
-    .forgot:hover {
-      color: #fff;
-    }
+    a:hover { color: #fff; }
   </style>
 </head>
 <body>
-  <div class="login-container">
+  <div class="login-box">
     <h2>تسجيل الدخول</h2>
-    <form onsubmit="loginUser(event)">
+    <form onsubmit="login(event)">
       <input type="text" id="username" placeholder="اسم المستخدم" required />
       <input type="password" id="password" placeholder="كلمة السر" required />
-      <button class="login-btn">دخول</button>
-      <a href="#" class="forgot">نسيت كلمة السر؟</a>
-      <a href="register.html" class="forgot">إنشاء حساب جديد</a>
+      <button type="submit">دخول</button>
+      <a href="mailto:liumexcode@gmail.com">هل تواجه مشكلة؟ تواصل معنا</a>
     </form>
   </div>
 
   <script>
-    function loginUser(e) {
+    function login(e) {
       e.preventDefault();
       const user = document.getElementById("username").value;
       const pass = document.getElementById("password").value;
 
-      const savedUser = localStorage.getItem("username");
-      const savedPass = localStorage.getItem("password");
+      // كلمة المرور الافتراضية (يمكنك تغييرها)
+      const correctUser = "admin";
+      const correctPass = "123456";
 
-      if (user === savedUser && pass === savedPass) {
+      if (user === correctUser && pass === correctPass) {
         alert("تم تسجيل الدخول بنجاح 🎉");
-        window.location.href = "home.html"; // تحويل لصفحة التفاصيل
+        window.location.href = "dashboard.html";
       } else {
         alert("خطأ في اسم المستخدم أو كلمة المرور ❌");
       }
     }
   </script>
-</body><!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>لوحة التحكم | Liumexcode</title>
-  <style>
-    body {
-      font-family: 'Cairo', sans-serif;
-      background: linear-gradient(135deg, #0d0d2b, #1b1b4d);
-      color: #fff;
-      text-align: center;
-      padding: 3rem;
-    }
-
-    h1 {
-      color: #00bfff;
-      margin-bottom: 1rem;
-    }
-
-    .card {
-      background: rgba(255,255,255,0.05);
-      padding: 2rem;
-      border-radius: 20px;
-      width: 90%;
-      max-width: 500px;
-      margin: auto;
-      box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    }
-
-    p {
-      line-height: 1.8;
-      font-size: 1.1rem;
-    }
-
-    a {
-      color: #00bfff;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    a:hover { color: #fff; }
-  </style>
-</head>
-<body>
-  <h1>مرحبًا بك في Liumexcode 👋</h1>
-  <div class="card">
-    <p>هذه لوحة التحكم الخاصة بك.</p>
-    <p>يمكنك الاطلاع على تفاصيل عملك وإدارة الخدمات من هنا.</p>
-    <p>للتواصل أو طلب الدعم الفني:</p>
-    <p>📧 <a href="mailto:Liumexcode@gmail.com">Liumexcode@gmail.com</a></p>
-    <p><a href="login.html">تسجيل الخروج</a></p>
-  </div>
 </body>
 </html> 
-</html>
