@@ -1,146 +1,4 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>تسجيل الدخول | Liumexcode</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap');
-    body {
-      font-family: 'Cairo', sans-serif;
-      background: linear-gradient(135deg, #0d0d2b, #1b1b4d);
-      color: #fff;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-    }
-    .login-container {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 2rem;
-      border-radius: 20px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-      width: 90%;
-      max-width: 400px;
-      text-align: center;
-      backdrop-filter: blur(10px);
-    }
-    h2 {
-      margin-bottom: 1rem;
-      font-size: 1.6rem;
-      color: #00bfff;
-    }
-    input[type="text"], input[type="password"], input[type="email"] {
-      width: 100%;
-      padding: 0.9rem;
-      margin: 0.5rem 0;
-      border: none;
-      border-radius: 10px;
-      background: rgba(255, 255, 255, 0.1);
-      color: #fff;
-      font-size: 1rem;
-      outline: none;
-    }
-    input::placeholder { color: #bbb; }
-    .login-btn {
-      background-color: #00bfff;
-      color: #fff;
-      border: none;
-      width: 100%;
-      padding: 0.9rem;
-      font-size: 1rem;
-      border-radius: 10px;
-      margin-top: 1rem;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .login-btn:hover { background-color: #0095cc; }
-    .link {
-      display: block;
-      margin-top: 1rem;
-      color: #aaa;
-      text-decoration: none;
-      font-size: 0.9rem;
-    }
-    .link:hover { color: #fff; }
-    .hidden { display: none; }
-  </style>
-</head>
-<body>
-  <div class="login-container">
-    <h2 id="form-title">تسجيل الدخول</h2>
-
-    <!-- نموذج الدخول -->
-    <form id="login-form">
-      <input type="text" id="login-username" placeholder="اسم المستخدم" required />
-      <input type="password" id="login-password" placeholder="كلمة السر" required />
-      <button class="login-btn" type="submit">دخول</button>
-      <a href="#" class="link" id="to-signup">إنشاء حساب جديد</a>
-    </form>
-
-    <!-- نموذج إنشاء حساب -->
-    <form id="signup-form" class="hidden">
-      <input type="text" id="signup-username" placeholder="اسم المستخدم" required />
-      <input type="email" id="signup-email" placeholder="البريد الإلكتروني" required />
-      <input type="password" id="signup-password" placeholder="كلمة السر" required />
-      <button class="login-btn" type="submit">إنشاء الحساب</button>
-      <a href="#" class="link" id="to-login">لديك حساب؟ تسجيل الدخول</a>
-    </form>
-  </div>
-
-  <script>
-    const loginForm = document.getElementById('login-form');
-    const signupForm = document.getElementById('signup-form');
-    const title = document.getElementById('form-title');
-    const toSignup = document.getElementById('to-signup');
-    const toLogin = document.getElementById('to-login');
-
-    // تبديل بين الصفحتين
-    toSignup.onclick = (e) => {
-      e.preventDefault();
-      loginForm.classList.add('hidden');
-      signupForm.classList.remove('hidden');
-      title.textContent = 'إنشاء حساب جديد';
-    };
-    toLogin.onclick = (e) => {
-      e.preventDefault();
-      signupForm.classList.add('hidden');
-      loginForm.classList.remove('hidden');
-      title.textContent = 'تسجيل الدخول';
-    };
-
-    // حفظ بيانات المستخدم
-    signupForm.onsubmit = (e) => {
-      e.preventDefault();
-      const user = {
-        username: document.getElementById('signup-username').value,
-        email: document.getElementById('signup-email').value,
-        password: document.getElementById('signup-password').value
-      };
-      localStorage.setItem('user', JSON.stringify(user));
-      alert('✅ تم إنشاء الحساب بنجاح!');
-      window.location.href = 'main.html'; // ← التحويل بعد التسجيل
-    };
-
-    // تسجيل الدخول
-    loginForm.onsubmit = (e) => {
-      e.preventDefault();
-      const user = JSON.parse(localStorage.getItem('user'));
-      const username = document.getElementById('login-username').value;
-      const password = document.getElementById('login-password').value;
-
-      if (user && username === user.username && password === user.password) {
-        alert(`مرحبًا ${username} 👋`);
-        window.location.href = 'main.html'; // ← التحويل بعد الدخول
-      } else {
-        alert('❌ اسم المستخدم أو كلمة السر غير صحيحة');
-      }
-    };
-  </script>
-</body>
-</html><!doctype html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="utf-8" />
@@ -397,6 +255,148 @@
       msgEl.textContent = 'تم إرسال الرسالة! سنعاود التواصل معك قريبًا.';
       setTimeout(()=>{ resetForm(); }, 2500);
     }
+  </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تسجيل الدخول | Liumexcode</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap');
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(135deg, #0d0d2b, #1b1b4d);
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .login-container {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+    }
+    h2 {
+      margin-bottom: 1rem;
+      font-size: 1.6rem;
+      color: #00bfff;
+    }
+    input[type="text"], input[type="password"], input[type="email"] {
+      width: 100%;
+      padding: 0.9rem;
+      margin: 0.5rem 0;
+      border: none;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      font-size: 1rem;
+      outline: none;
+    }
+    input::placeholder { color: #bbb; }
+    .login-btn {
+      background-color: #00bfff;
+      color: #fff;
+      border: none;
+      width: 100%;
+      padding: 0.9rem;
+      font-size: 1rem;
+      border-radius: 10px;
+      margin-top: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .login-btn:hover { background-color: #0095cc; }
+    .link {
+      display: block;
+      margin-top: 1rem;
+      color: #aaa;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    .link:hover { color: #fff; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2 id="form-title">تسجيل الدخول</h2>
+
+    <!-- نموذج الدخول -->
+    <form id="login-form">
+      <input type="text" id="login-username" placeholder="اسم المستخدم" required />
+      <input type="password" id="login-password" placeholder="كلمة السر" required />
+      <button class="login-btn" type="submit">دخول</button>
+      <a href="#" class="link" id="to-signup">إنشاء حساب جديد</a>
+    </form>
+
+    <!-- نموذج إنشاء حساب -->
+    <form id="signup-form" class="hidden">
+      <input type="text" id="signup-username" placeholder="اسم المستخدم" required />
+      <input type="email" id="signup-email" placeholder="البريد الإلكتروني" required />
+      <input type="password" id="signup-password" placeholder="كلمة السر" required />
+      <button class="login-btn" type="submit">إنشاء الحساب</button>
+      <a href="#" class="link" id="to-login">لديك حساب؟ تسجيل الدخول</a>
+    </form>
+  </div>
+
+  <script>
+    const loginForm = document.getElementById('login-form');
+    const signupForm = document.getElementById('signup-form');
+    const title = document.getElementById('form-title');
+    const toSignup = document.getElementById('to-signup');
+    const toLogin = document.getElementById('to-login');
+
+    // تبديل بين الصفحتين
+    toSignup.onclick = (e) => {
+      e.preventDefault();
+      loginForm.classList.add('hidden');
+      signupForm.classList.remove('hidden');
+      title.textContent = 'إنشاء حساب جديد';
+    };
+    toLogin.onclick = (e) => {
+      e.preventDefault();
+      signupForm.classList.add('hidden');
+      loginForm.classList.remove('hidden');
+      title.textContent = 'تسجيل الدخول';
+    };
+
+    // حفظ بيانات المستخدم
+    signupForm.onsubmit = (e) => {
+      e.preventDefault();
+      const user = {
+        username: document.getElementById('signup-username').value,
+        email: document.getElementById('signup-email').value,
+        password: document.getElementById('signup-password').value
+      };
+      localStorage.setItem('user', JSON.stringify(user));
+      alert('✅ تم إنشاء الحساب بنجاح!');
+      window.location.href = 'main.html'; // ← التحويل بعد التسجيل
+    };
+
+    // تسجيل الدخول
+    loginForm.onsubmit = (e) => {
+      e.preventDefault();
+      const user = JSON.parse(localStorage.getItem('user'));
+      const username = document.getElementById('login-username').value;
+      const password = document.getElementById('login-password').value;
+
+      if (user && username === user.username && password === user.password) {
+        alert(`مرحبًا ${username} 👋`);
+        window.location.href = 'main.html'; // ← التحويل بعد الدخول
+      } else {
+        alert('❌ اسم المستخدم أو كلمة السر غير صحيحة');
+      }
+    };
   </script>
 </body>
 </html>
