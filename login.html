@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تسجيل الدخول | Liumexcode</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap');
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(135deg, #0d0d2b, #1b1b4d);
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .login-container {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+      font-size: 1.6rem;
+      color: #00bfff;
+    }
+
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 0.9rem;
+      margin: 0.5rem 0;
+      border: none;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    input::placeholder {
+      color: #bbb;
+    }
+
+    .login-btn {
+      background-color: #00bfff;
+      color: #fff;
+      border: none;
+      width: 100%;
+      padding: 0.9rem;
+      font-size: 1rem;
+      border-radius: 10px;
+      margin-top: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .login-btn:hover {
+      background-color: #0095cc;
+    }
+
+    .forgot {
+      display: block;
+      margin-top: 1rem;
+      color: #aaa;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .forgot:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>تسجيل الدخول</h2>
+    <form>
+      <input type="text" placeholder="اسم المستخدم" required />
+      <input type="password" placeholder="كلمة السر" required />
+      <button class="login-btn">دخول</button>
+      <a href="#" class="forgot">نسيت كلمة السر؟</a>
+    </form>
+  </div>
+</body>
+</html>
