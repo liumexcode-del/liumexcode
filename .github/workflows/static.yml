@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Liumexcode — حلول برمجية</title>
+  <meta name="description" content="Liumexcode: حلول برمجية وتصميم واجهات ومشاريع ويب." />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#ffffff;
+      --card:#f7fafc;
+      --muted:#6b7280;
+      --accent:#0b67d0;
+      --accent-2:#0f9d58;
+      --radius:12px;
+      --text:#0b1726;
+      font-family:'Cairo', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.55;
+    }
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:60;
+      backdrop-filter:blur(6px);
+      background:linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.9));
+      border-bottom:1px solid rgba(15,20,25,0.04);
+    }
+    .container{max-width:1100px;margin:0 auto;padding:14px 18px}
+    .nav{display:flex;gap:16px;align-items:center;justify-content:space-between}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo-wrap{display:flex;align-items:center;gap:10px}
+    .logo{
+      width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#3aa0ff);
+      display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px;
+      box-shadow:0 6px 18px rgba(11,103,208,0.12);
+      flex-shrink:0;
+    }
+    .brand-title{font-weight:700}
+    nav a{color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:8px}
+    nav a.cta{background:var(--accent);color:#fff}
+
+    .hero{
+      padding:54px 18px 28px;
+    }
+    .hero-grid{
+      display:grid;
+      gap:20px;
+      grid-template-columns:1fr;
+      align-items:center;
+      max-width:1100px;margin:0 auto;
+    }
+    .hero-left{padding:14px 18px}
+    h1{font-size:34px;margin:0 0 8px;color:var(--text)}
+    .lead{color:var(--muted);margin:0 0 18px;font-size:18px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{padding:10px 16px;border-radius:10px;border:0;background:transparent;cursor:pointer;font-weight:600}
+    .btn.primary{background:var(--accent);color:#fff}
+    .btn.ghost{border:1px solid rgba(11,103,208,0.12);background:#fff;color:var(--text)}
+
+    section{padding:30px 18px}
+    .grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+    .card{background:var(--card);padding:18px;border-radius:var(--radius);box-shadow:0 6px 20px rgba(15,20,30,0.03)}
+    h2{margin:0 0 12px}
+    .muted{color:var(--muted);font-size:15px}
+    .service-list{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+    .service-item{display:flex;gap:12px;align-items:flex-start}
+    .icon{
+      width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#3aa0ff);
+      display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;
+      flex-shrink:0;font-size:18px;
+    }
+
+    form{display:grid;gap:10px}
+    label{font-weight:600;font-size:14px}
+    input,textarea,select{padding:10px;border-radius:8px;border:1px solid #e6e9ef;font-size:15px;background:#fff}
+    .row{display:flex;gap:12px}
+    .row .col{flex:1}
+
+    footer{padding:24px 18px;background:#fafbfd;border-top:1px solid rgba(11,103,208,0.04);margin-top:20px}
+    .footer-inner{max-width:1100px;margin:0 auto;display:flex;gap:20px;align-items:center;justify-content:space-between;flex-wrap:wrap;color:var(--muted)}
+
+    @media(min-width:900px){
+      .hero-grid{grid-template-columns:1fr 420px;align-items:center}
+      h1{font-size:42px}
+      .hero{padding:64px 18px}
+    }
+    @media(max-width:420px){
+      h1{font-size:28px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo-wrap">
+          <div class="logo">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+              <rect x="0" y="0" width="24" height="24" rx="5" fill="white" fill-opacity="0.06"/>
+              <path d="M6 6H14V8H8V18H6V6Z" fill="white"/>
+            </svg>
+          </div>
+        </div>
+        <div>
+          <div class="brand-title">Liumexcode</div>
+          <div style="font-size:13px;color:var(--muted)">حلول برمجية وتصميم واجهات</div>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#about">من نحن</a>
+        <a href="#services">الخدمات</a>
+        <a href="#contact" class="cta">تواصل معنا</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-grid container">
+        <div class="hero-left">
+          <h1>بناء حلول رقمية ذكية مع <span style="color:var(--accent)">Liumexcode</span></h1>
+          <p class="lead">نقوم بتصميم وتطوير مواقع ويب وتطبيقات موبايل وأنظمة إدارة مخصصة بسرعة وجودة عالية.</p>
+          <div class="actions">
+            <a href="#services" class="btn primary">اطلع على الخدمات</a>
+            <a href="#contact" class="btn ghost">تواصل معنا</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-top:0">لماذا تختارنا؟</h3>
+          <p class="muted">حلول مخصصة — تسليم سريع — دعم فني موثوق</p>
+          <ul class="service-list" style="margin-top:12px">
+            <li class="service-item"><div class="icon">1</div><div><strong>تطوير ويب</strong><div class="muted">مواقع سريعة ومتجاوبة.</div></div></li>
+            <li class="service-item"><div class="icon">2</div><div><strong>تطبيقات موبايل</strong><div class="muted">Android & iOS.</div></div></li>
+            <li class="service-item"><div class="icon">3</div><div><strong>نظم إدارة</strong><div class="muted">لوحة تحكم لإدارة المحتوى والعمليات.</div></div></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <h2>من نحن</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>عن Liumexcode</h3>
+            <p class="muted">فريق متخصص في بناء حلول رقمية — ندمج التصميم الجذاب مع برمجة قوية لتسليم مشاريع قابلة للتطوير.</p>
+          </div>
+          <div class="card">
+            <h3>رؤيتنا</h3>
+            <p class="muted">نهدف أن نساعد الشركات والأفراد على النجاح الرقمي بأدوات بسيطة وفعّالة.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <h2>خدماتنا</h2>
+        <div class="grid" style="margin-top:10px">
+          <div class="card">
+            <h3>تصميم وتطوير مواقع</h3>
+            <p class="muted">تصميم واجهات حديثة، تحسين الأداء، واستضافة متكاملة.</p>
+          </div>
+          <div class="card">
+            <h3>تطبيقات موبايل</h3>
+            <p class="muted">بناء تطبيقات تعمل بسلاسة على Android وiOS.</p>
+          </div>
+          <div class="card">
+            <h3>تكامل وAPIs</h3>
+            <p class="muted">ربط أنظمة خارجية وتطوير واجهات برمجية آمنة.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2>تواصل معنا</h2>
+        <div class="grid" style="align-items:start">
+          <div class="card">
+            <form id="contactForm" onsubmit="submitForm(event)">
+              <div class="row">
+                <div class="col">
+                  <label for="name">الاسم</label>
+                  <input id="name" name="name" required placeholder="اسمك">
+                </div>
+                <div class="col">
+                  <label for="phone">الهاتف</label>
+                  <input id="phone" name="phone" required placeholder="+235 ...">
+                </div>
+              </div>
+
+              <label for="email">البريد الإلكتروني</label>
+              <input id="email" name="email" type="email" required placeholder="name@example.com">
+
+              <label for="message">الرسالة</label>
+              <textarea id="message" name="message" rows="5" required placeholder="اكتب رسالتك..."></textarea>
+
+              <div style="margin-top:12px;display:flex;gap:8px">
+                <button type="submit" class="btn primary">أرسل</button>
+                <button type="button" class="btn ghost" onclick="resetForm()">مسح</button>
+              </div>
+              <div id="formMsg" style="margin-top:10px;color:var(--muted);font-size:14px"></div>
+            </form>
+          </div>
+
+          <div class="card">
+            <h3>معلومات الاتصال</h3>
+            <p class="muted">📍 العنوان: N'Djamena, Chad</p>
+            <p class="muted">📞 الهاتف: +235 123 456 789</p>
+            <p class="muted">✉️ البريد: <strong>liumexcode@gmail.com</strong></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>© <span id="year"></span> Liumexcode — جميع الحقوق محفوظة</div>
+      <div class="muted">تصميم وتطوير بسيط — قابل للتخصيص</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function resetForm(){
+      document.getElementById('contactForm').reset();
+      document.getElementById('formMsg').textContent = '';
+    }
+
+    function submitForm(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      console.log({name,phone,email,message});
+      const msgEl = document.getElementById('formMsg');
+      msgEl.style.color = 'green';
+      msgEl.textContent = 'تم إرسال الرسالة! سنعاود التواصل معك قريبًا.';
+      setTimeout(()=>{ resetForm(); }, 2500);
+    }
+  </script>
+</body>
+</html>
