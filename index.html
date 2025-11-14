@@ -1,0 +1,135 @@
+<!-- احفظ كـ index.html -->
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>لعبتي - قفز وتفادى</title>
+  <style>
+    body { margin:0; background:#111; color:#fff; font-family: Arial, sans-serif; display:flex; align-items:center; justify-content:center; height:100vh; }
+    canvas { background:#7ec8ff; display:block; border-radius:10px; }
+    .ui { position:fixed; top:10px; left:10px; font-size:14px; }
+    button { padding:6px 10px; margin-right:6px; }
+  </style>
+</head>
+<body>
+  <div class="ui">
+    <button id="restart">إعادة</button>
+    <span>النتيجة: <span id="score">0</span></span>
+  </div>
+  <canvas id="game" width="480" height="640"></canvas>
+
+  <script>
+  const canvas = document.getElementById('game');
+  const ctx = canvas.getContext('2d');
+  const scoreEl = document.getElementById('score');
+  document.getElementById('restart').onclick = reset;
+
+  let player = { x:80, y:300, w:30, h:30, vy:0 };
+  const gravity = 0.8;
+  const jump = -12;
+  let obstacles = [];
+  let frame = 0;
+  let score = 0;
+  let gameOver = false;
+
+  function reset(){
+    player = { x:80, y:300, w:30, h:30, vy:0 };
+    obstacles = [];
+    frame = 0; score = 0; gameOver = false;
+    scoreEl.textContent = score;
+    loop();
+  }
+
+  function spawnObstacle(){
+    const gap = 160; // المسافة الفارغة
+    const minHeight = 60;
+    const topH = minHeight + Math.random()*(canvas.height - gap - minHeight*2);
+    const bottomY = topH + gap;
+    obstacles.push({ x: canvas.width, topH, bottomY, w:50 });
+  }
+
+  function update(){
+    if (gameOver) return;
+    frame++;
+    player.vy += gravity;
+    player.y += player.vy;
+    // حد الشاشة
+    if (player.y + player.h > canvas.height) { player.y = canvas.height - player.h; gameOver = true; }
+    if (player.y < 0) { player.y = 0; player.vy = 0; }
+
+    // توليد حواجز
+    if (frame % 90 === 0) spawnObstacle();
+
+    // تحديث حواجز
+    for (let i = obstacles.length-1; i >= 0; i--){
+      obstacles[i].x -= 3;
+      // تسجيل النقاط
+      if (!obstacles[i].scored && obstacles[i].x + obstacles[i].w < player.x){
+        score++; obstacles[i].scored = true; scoreEl.textContent = score;
+      }
+      // إزالة الحواجز خارج الشاشة
+      if (obstacles[i].x + obstacles[i].w < 0) obstacles.splice(i,1);
+      // تصادم
+      if (collisionRect(player, {x:obstacles[i].x, y:0, w:obstacles[i].w, h:obstacles[i].topH}) ||
+          collisionRect(player, {x:obstacles[i].x, y:obstacles[i].bottomY, w:obstacles[i].w, h:canvas.height - obstacles[i].bottomY})){
+            gameOver = true;
+      }
+    }
+  }
+
+  function collisionRect(a,b){
+    return a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y;
+  }
+
+  function draw(){
+    // خلفية
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    // أرض سهلة
+    ctx.fillStyle = '#3b4f2b';
+    ctx.fillRect(0, canvas.height-40, canvas.width, 40);
+
+    // لاعب
+    ctx.fillStyle = '#ffdd57';
+    ctx.fillRect(player.x, player.y, player.w, player.h);
+
+    // حواجز
+    ctx.fillStyle = '#2f2f2f';
+    obstacles.forEach(o=>{
+      ctx.fillRect(o.x, 0, o.w, o.topH);
+      ctx.fillRect(o.x, o.bottomY, o.w, canvas.height - o.bottomY);
+    });
+
+    if (gameOver){
+      ctx.fillStyle = 'rgba(0,0,0,0.6)';
+      ctx.fillRect(0,0,canvas.width,canvas.height);
+      ctx.fillStyle = '#fff';
+      ctx.font = '28px Arial';
+      ctx.textAlign = 'center';
+      ctx.fillText('انتهت اللعبة — النتيجة: ' + score, canvas.width/2, canvas.height/2 - 10);
+      ctx.font = '18px Arial';
+      ctx.fillText('اضغط مسافة للقفز أو زر إعادة', canvas.width/2, canvas.height/2 + 24);
+    }
+  }
+
+  function loop(){
+    update();
+    draw();
+    if (!gameOver) requestAnimationFrame(loop);
+  }
+
+  // تحكم
+  window.addEventListener('keydown', e=>{
+    if (e.code === 'Space') {
+      if (gameOver) reset(); else player.vy = jump;
+    }
+  });
+  window.addEventListener('touchstart', e=>{
+    if (gameOver) reset(); else player.vy = jump;
+  });
+
+  // ابدأ
+  loop();
+  </script>
+</body>
+</html>
